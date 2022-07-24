@@ -8,7 +8,6 @@ venv
 *.env 
 *.md
 *.yml
-*.gif
 dist
 docs
 env*
@@ -25,4 +24,5 @@ dump.rdb
 app/assets
 *.mp3 
 *.mp4
+*.wav
 *.gif
