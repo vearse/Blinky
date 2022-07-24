@@ -1,0 +1,73 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="ui">
+      <div id="dn-global-search-wrapper" class="dn-search-wrapper">
+        <div class="dn-search-wrapper__bg"></div>
+        <div id="dn-global-header" class="dn-header">
+          <div class="dn-header__actions">
+            <a href="#" class="dn-account-menu dn-header__account-menu"><span class="dn-account-menu__title">Account</span></a>
+            <!-- <a class="dn-general-menu dn-header__general-menu" href="#">☰</a> -->
+          </div>
+        </div>
+      
+      </div>
+      <!-- <div class="dn-below-search-wrapper">
+        <article>
+          <h1>Title</h1>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi atque debitis ipsum veritatis velit? Nihil nobis sit adipisci? Quia esse possimus, quam ratione nam recusandae ut quas quisquam dolorum quidem?</p>
+        </article>
+        <article>
+          <h1>Title</h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae nobis quas quidem iusto accusamus, perspiciatis quo eos a esse, soluta, perferendis sint cumque maxime molestiae consectetur modi repellendus ullam libero.</p>
+        </article>
+        <article>
+          <h1>Title</h1>
+          <p>Stuff</p>
+          <p>Stuff</p>
+          <p>Stuff</p>
+        </article>
+        <article>
+          <h1>Title</h1>
+          <p>Stuff</p>
+          <p>Stuff</p>
+          <p>Stuff</p>
+        </article>
+        <article>
+      </div> -->
+    </div>
+    <style>
+      .ui.grid {
+        margin-top: -2rem; 
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    var $window = $(window),
+      $globalSearchWrapper = $("#dn-global-search-wrapper"),
+      $globalHeader = $("#dn-global-header"),
+      $globalSearchInputWrapper = $("#dn-global-search-input-wrapper");
+    $(".dn-below-search-wrapper").css("top", $window.innerHeight() + 140 + "px");
+    
+
+    
+    $window.on("scroll resize", function () {
+      var searchInputOffset, headerOffset, oldSearchWrapperHeight;
+      if ($window.scrollTop() === 0) {
+        $globalSearchWrapper.attr("style", "");
+        $globalSearchWrapper.height(window.innerHeight);
+        $globalSearchWrapper.removeClass("dn-search-wrapper--as-header");
+      } else {
+        $globalSearchWrapper.height(
+          Math.max(100, $window.innerHeight() - $window.scrollTop())
+        ); 
+        // console.log($globalSearchWrapper.height());
+        if ($globalSearchWrapper.height() <= 100) {
+          $globalSearchWrapper.addClass("dn-search-wrapper--as-header");
+        } else {
+          $globalSearchWrapper.removeClass("dn-search-wrapper--as-header");
+        }
+      }
+    });
+  </script>
+{% endblock %}
