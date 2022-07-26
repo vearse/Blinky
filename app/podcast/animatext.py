@@ -31,8 +31,9 @@ def roll(text, index):
 
 # <<< ========== Customize font and text below ============== >>>>
 
-font_path = "/usr/share/fonts/truetype/freefont/FreeMono.ttf"
-fnt = ImageFont.truetype(font_path,28)
+# font_path = "/usr/share/fonts/truetype/freefont/FreeMono.ttf"
+# fnt = ImageFont.truetype(font_path,28)
+fnt = ImageFont.load_default()
  
 def generate_animator(id,tweet, background):
     line = 44
