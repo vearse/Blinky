@@ -4,7 +4,6 @@ from googletrans import Translator
 import pyttsx3
 from gtts import gTTS
 from moviepy.editor import *
-from  AppKit import NSSpeechSynthesizer
 
 def trimmiffy(text):
     emoji_pattern = re.compile("["
