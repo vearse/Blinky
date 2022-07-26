@@ -146,7 +146,7 @@ def podcast_generator(link, language= '', voice=''):
     )   
     db.session.add(player)
     db.session.commit()
-    generate_animator(tweetId,tweet, 'mossholder')
+    # generate_animator(tweetId,tweet, 'mossholder')
     # generateNewAudiogram(tweetId)
     
 
