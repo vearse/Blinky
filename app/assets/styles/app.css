@@ -1,3 +1,32 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@vearse 
+vearse
+/
+PlayPodcast
+Private
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+PlayPodcast/app/static/styles/app.css
+@vearse
+vearse Blinky
+Latest commit 904af54 11 days ago
+ History
+ 2 contributors
+@vearse@Hiyorimi
+118 lines (109 sloc)  2.22 KB
+
 @media -sass-debug-info{filename{}line{font-family:\000037}}
 nav {
   margin-bottom: 40px !important;
@@ -28,239 +57,55 @@ table.selectable tr:hover {
   --theme-white-color:#FFFFFF;
 }
 
-html, body {
+/* html, body {
   width: 100%;
-  /* height: 2000px; */
+  height: 2000px;
   height: 110%;
-}
+} */
 
 body {
   font: 16px Avenir, Verdana, sans-serif;
 }
 
-.dn-search-wrapper {
-  display: block;
-  padding: 2em;
-  box-sizing: border-box;
-  background: #ddd none;
-  background-size: cover;
-  width: 100%;
-  height: 600px;
-  height: 100vh;
-  font: 16px Avenir, Verdana, sans-serif;
-  text-align: center;
-  box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  position: fixed;
-  z-index: 2;
+.brand{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  color: #7749F8;
 }
-
-.dn-search-wrapper:before {
-    white-space: nowrap;
-    overflow: hidden;
-    display: inline-block;
-    width: 0;
-    height: 100%;
-    vertical-align: middle;
-    content: "";
-  }
-
-.dn-search-wrapper__bg {
-    /* background: grey url(https://picsum.photos/640/480); */
-    background: grey url(/static/images/listen-podcast.jpg);
-    background-size: cover;
-    background-position: center top;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    filter: blur(0px);
-    transition: all .6s ease;
-    will-change: opacity, filter;
-  }
-
-.dn-search-wrapper--as-header .dn-search-wrapper__bg {
-    opacity: .8;
-    filter: blur(32px);
-  }
-
-.dn-search-wrapper *, .dn-search-wrapper *:after, .dn-search-wrapper *:before {
-    font: 16px Avenir, Verdana, sans-serif;
-    box-sizing: border-box;
-    white-space: normal;
-    overflow: visible;
-  }
-
-.dn-search-wrapper .dn-header {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    top: 2em;
-    left: 2em;
-    right: 2em;
-  }
-
-.dn-search-wrapper .dn-header__logo {
-      float: left;
-    }
-
-.dn-search-wrapper .dn-header__actions {
-      float: right;
-    }
-
-.dn-search-wrapper .dn-header__account-menu,
-    .dn-search-wrapper .dn-header__general-menu {
-      margin-top: calc(calc(16px / 1.5) / 2);
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-.dn-search-wrapper .dn-header:after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-
-.dn-search-wrapper .dn-search-input-wrapper {
-    position: relative;
-    z-index: 2;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-.dn-search-wrapper .dn-search-input-wrapper__input {
-      width: 12em;
-      width: 50vw;
-      border-width: 0;
-      border-radius: 2px;
-      padding: .5em;
-      font-size: 2em;
-    }
-
-.dn-search-wrapper .dn-search-input-wrapper__input:focus {
-        outline: 2px auto #999;
-      }
-
-.dn-search-wrapper .dn-search-input-wrapper__input::-webkit-input-placeholder {
-        color: #ddd;
-      }
-
-.dn-search-wrapper .dn-account-menu {
-    position: relative;
-  }
-
-.dn-search-wrapper .dn-account-menu__title {
-      white-space: nowrap;
-      overflow: hidden;
-      text-indent: 100%;
-      display: inline-block;
-      width: 2em;
-      height: 2em;
-      background: #777 none;
-      border-radius: 2em;
-    }
-
-.dn-search-wrapper .dn-account-menu__notifications {
-      font-size: 0;
-      display: inline-block;
-      position: absolute;
-      top: calc(-1 * calc(16px / 1.5) / 4);
-      left: 80%;
-      margin-left: calc(-1 * calc(16px / 1.5) / 2);
-      background: brown none;
-      color: #fff;
-      line-height: calc(16px / 1.5);
-      padding: 0 calc(calc(16px / 1.5) / 2.4);
-      border-radius: calc(calc(16px / 1.5) * 3);
-      line-height: 0;
-    }
-
-.dn-search-wrapper .dn-account-menu__quantity {
-      font-size: calc(16px / 1.5);
-    }
-
-.dn-search-wrapper .dn-general-menu {
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
-    padding-left: .5em;
-    font-size: 2em;
-  }
-
-.dn-below-search-wrapper {
-  position: relative;
-  z-index: 0;
+.brand-info{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  padding-right: 30px;
+  line-height: 48px;
+  color: #FFFFFF;
 }
-
-.hero-test{
-  top: -200px;
-  position: relative;
-  font-size: 50px;
-  font-weight: bold;
-  color: orange;
-  font-family: fantasy;
-}
-.play-dropdown{
-  min-width: 125px !important;  top: -5px !important;
-  height: 40px !important;
-  border-radius: 20px !important;
-}
-body {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  /* background: url("http://unsplash.it/1200x800") center center no-repeat; */
-  /* background-size: cover; */
-}
-body:before {
-  /* content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
-  opacity: 0.6; */
-}
-/* Player */
-.app{
-  background-color: var(--theme-bg-color);
-  max-width: 1250px;
-  max-height: 860px;
-  height: 90vh;
-  margin: 20px auto !important;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  width: 100%;
-  border-radius: 14px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  font-size: 15px;
-  font-weight: 500;
-}
-
 .center-container{
   justify-content: center;
     display: flex;
 }
 .account{
-  width: 850px !important;
-  height: 500px !important;
-  margin-top: 40px;
+  width: 900px !important;
+  height: 600px !important;
+  margin-top: 100px;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+.account .row{
+  height: 100%;
 }
 .account .info{
   background: linear-gradient(135deg, #43CBFF 0%, #7749F8 60.58%);
   border-radius: 15px 0px 0px 15px;
+  padding: 30px;
 }
 .account .form{
   background: #FFFFFF;
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
-  border-radius: 15px;
+  border-radius: 0px 15px 15px 0px;
 }
 
 .app .center{
@@ -271,5 +116,32 @@ body:before {
   color: white !important;
 }
 .form-container{
-  /* margin: 20px 8px; */
+  margin: 20px 8px;
+}
+.form-container label{
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #333333;
+}
+
+.btn-blinky{
+  width: 350px;
+  height: 45px;
+  background: #7749F8;
+  border-radius: 50px;
+  margin-top: 16px;
+  color: #FFFFFF;
+}
+.form-header{
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #333333;
 }
