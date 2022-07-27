@@ -12,7 +12,7 @@ dist
 docs
 env*
 readme_media
-tests
+tests 
 venv
 *.egg
 *.egg-info
@@ -21,7 +21,6 @@ venv
 dump.rdb
 .vscode/
 .history/
-app/assets
 *.mp3 
 *.mp4
 *.wav

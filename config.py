@@ -141,3 +141,11 @@ config = {
     'heroku': HerokuConfig,
     'unix': UnixConfig
 }
+
+# username = doadmin
+# password = AVNS_IBgkbf3SbAw4KWOGm7P hide
+# host = db-postgresql-blinky-do-user-10656060-0.b.db.ondigitalocean.com
+# port = 25060
+# database = defaultdb
+# sslmode = require
+# postgresql://doadmin:AVNS_IBgkbf3SbAw4KWOGm7P@db-postgresql-blinky-do-user-10656060-0.b.db.ondigitalocean.com:25060/defaultdb?sslmode=require
