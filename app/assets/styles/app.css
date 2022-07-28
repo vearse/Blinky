@@ -1,31 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@vearse 
-vearse
-/
-PlayPodcast
-Private
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Settings
-PlayPodcast/app/static/styles/app.css
-@vearse
-vearse Blinky
-Latest commit 904af54 11 days ago
- History
- 2 contributors
-@vearse@Hiyorimi
-118 lines (109 sloc)  2.22 KB
 
 @media -sass-debug-info{filename{}line{font-family:\000037}}
 nav {
@@ -56,12 +28,6 @@ table.selectable tr:hover {
   --theme-bg-color: rgba(16 18 27 / 40%);
   --theme-white-color:#FFFFFF;
 }
-
-/* html, body {
-  width: 100%;
-  height: 2000px;
-  height: 110%;
-} */
 
 body {
   font: 16px Avenir, Verdana, sans-serif;
