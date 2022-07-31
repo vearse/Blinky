@@ -82,13 +82,13 @@ def register():
 def logout():
     logout_user()
     flash('You have been logged out.', 'info')
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.login'))
 
 @account.route('/reset-password', methods=['GET', 'POST'])
 def reset_password_request():
     """Respond to existing user's request to reset their password."""
     if not current_user.is_anonymous:
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.login'))
     form = RequestResetPasswordForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -114,20 +114,20 @@ def reset_password_request():
 def reset_password(token):
     """Reset an existing user's password."""
     if not current_user.is_anonymous:
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.login'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is None:
             flash('Invalid email address.', 'form-error')
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.login'))
         if user.reset_password(token, form.new_password.data):
             flash('Your password has been updated.', 'form-success')
             return redirect(url_for('account.login'))
         else:
             flash('The password reset link is invalid or has expired.',
                   'form-error')
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.login'))
     return render_template('account/reset_password.html', form=form)
 
 
@@ -142,7 +142,7 @@ def change_password():
             db.session.add(current_user)
             db.session.commit()
             flash('Your password has been updated.', 'form-success')
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.login'))
         else:
             flash('Original password is invalid.', 'form-error')
     return render_template('account/manage.html', form=form)
@@ -170,7 +170,7 @@ def change_email_request():
                 change_email_link=change_email_link)
             flash('A confirmation link has been sent to {}.'.format(new_email),
                   'warning')
-            return redirect(url_for('main.index'))
+            return redirect(url_for('main.login'))
         else:
             flash('Invalid email or password.', 'form-error')
     return render_template('account/manage.html', form=form)
@@ -184,7 +184,7 @@ def change_email(token):
         flash('Your email address has been updated.', 'success')
     else:
         flash('The confirmation link is invalid or has expired.', 'error')
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.login'))
 
 
 @account.route('/confirm-account')
@@ -203,7 +203,7 @@ def confirm_request():
         confirm_link=confirm_link)
     flash('A new confirmation link has been sent to {}.'.format(
         current_user.email), 'warning')
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.login'))
 
 
 @account.route('/confirm-account/<token>')
@@ -211,12 +211,12 @@ def confirm_request():
 def confirm(token):
     """Confirm new user's account with provided token."""
     if current_user.confirmed:
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.login'))
     if current_user.confirm_account(token):
         flash('Your account has been confirmed.', 'success')
     else:
         flash('The confirmation link is invalid or has expired.', 'error')
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.login'))
 
 
 @account.route(
@@ -228,7 +228,7 @@ def join_from_invite(user_id, token):
     """
     if current_user is not None and current_user.is_authenticated:
         flash('You are already logged in.', 'error')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.login'))
 
     new_user = User.query.get(user_id)
     if new_user is None:
@@ -236,7 +236,7 @@ def join_from_invite(user_id, token):
 
     if new_user.password_hash is not None:
         flash('You have already joined.', 'error')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.login'))
 
     if new_user.confirm_account(token):
         form = CreatePasswordForm()
@@ -265,7 +265,7 @@ def join_from_invite(user_id, token):
             template='account/email/invite',
             user=new_user,
             invite_link=invite_link)
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.login'))
 
 
 @account.before_app_request
@@ -282,7 +282,7 @@ def before_request():
 def unconfirmed():
     """Catch users with unconfirmed emails."""
     if current_user.is_anonymous or current_user.confirmed:
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.login'))
     return render_template('account/unconfirmed.html')
 
 
