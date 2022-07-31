@@ -2,7 +2,6 @@
 import re
 from googletrans import Translator
 import pyttsx3
-from gtts import gTTS
 from moviepy.editor import *
 
 def trimmiffy(text):
@@ -68,10 +67,11 @@ def selectEnglishSpeaker(engine, speaker, voice):
         return engine.setProperty('voice', voice.id )
 
 def giftSpeaking(id, text, language):
-    tts = gTTS(text=text,  lang=language, slow=False) 
-    audio_file= './app/assets/audio/'+ str(id) + '.mp3'
-    tts.save(audio_file)
-    return audio_file
+    # # tts = gTTS(text=text,  lang=language, slow=False) 
+    # audio_file= './app/assets/audio/'+ str(id) + '.mp3'
+    # tts.save(audio_file)
+    # return audio_file
+    return
  
 def generateNewAudiogram(id):
     video_file= VideoFileClip('./app/assets/media/'+str(id)+'.mp4').resize(height=100)
