@@ -526,6 +526,14 @@ body.light-mode .video-bg:before {
     transition: 0.3s;
     white-space: nowrap;
 }
+.create-button{
+    width: 152px;
+    height: 46px;
+    background: #7749F8;
+    color: white;
+    border-radius: 50px;
+    line-height: 30px;
+}
 
 .content-wrapper-img {
     width: 186px;
@@ -552,7 +560,13 @@ body.light-mode .video-bg:before {
 .content-section-title {
     color: var(--content-title-color);
     margin-bottom: 14px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
 }
+
 .content-section ul.products {
     display: flex;
     flex-direction: column;
@@ -637,7 +651,7 @@ body.light-mode .video-bg:before {
 }
 @media screen and (max-width: 390px) {
     .status-button {
-    padding: 6px 14px;
+        padding: 6px 14px;
     }
 }
 .status-button.open {
@@ -921,7 +935,10 @@ body.light-mode .video-bg:before {
     font-weight: 600;
     font-size: 36px;
     line-height: 48px;
+    font-family: 'Inter';
+    color: #191635;
 }
+
 
 .dn-search-input-wrapper__input {
     width: 70%;
