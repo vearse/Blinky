@@ -382,7 +382,9 @@ body.light-mode .video-bg:before {
     transition: 0.3s;
 }
 .side-menu a:hover {
-    background-color: var(--hover-menu-bg);
+    /* background-color: var(--hover-menu-bg); */
+    background: rgba(119, 73, 248, 0.1);
+    border-radius: 50px;
 }
 .side-menu svg {
     width: 16px;
