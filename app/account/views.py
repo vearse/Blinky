@@ -293,24 +293,35 @@ def index():
     form = GeneratePodcastForm()
     return render_template('dashboard/index.html', form=form)
 
-
-@account.route('/home/create')
-@login_required
-def create():
-    form = GeneratePodcastForm()
-    return render_template('dashboard/create.html', form=form)
-
 @account.route('/home/saved')
 @login_required
 def saved():
     form = GeneratePodcastForm()
     return render_template('dashboard/saved.html', form=form)
 
-@account.route('/home/favourite')
+@account.route('/create/podcast')
 @login_required
-def favourite():
+def create_podcast():
     form = GeneratePodcastForm()
-    return render_template('dashboard/favourite.html', form=form)
+    return render_template('dashboard/create_podcast.html', form=form)
+
+@account.route('/home/podcast')
+@login_required
+def podcast():
+    form = GeneratePodcastForm()
+    return render_template('dashboard/podcast.html', form=form)
+
+@account.route('/create/audiograph')
+@login_required
+def create_audiograph():
+    form = GeneratePodcastForm()
+    return render_template('dashboard/create_audiograph.html', form=form)
+
+@account.route('/home/audiograph')
+@login_required
+def audiograph():
+    form = GeneratePodcastForm()
+    return render_template('dashboard/audiograph.html', form=form)
 
 
 @account.route('/manage', methods=['GET', 'POST'])

@@ -840,6 +840,7 @@ body.light-mode .video-bg:before {
     cursor: pointer;
     transition: 0.3s ease;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    margin-bottom: 15px;
 }
 .app-card:hover {
     transform: scale(1.02);
@@ -952,4 +953,23 @@ body.light-mode .video-bg:before {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
+ }
+ .mini-podcast{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    width: 30px;
+    height: 30px;
+    background: rgba(235, 87, 87, 0.2);
+    border-radius: 50px;
+ }
+ .bg-publish{
+    background: rgba(86, 196, 86, 0.2);
+    color: #56C456;
+ }
+ .bg-saved {
+    background: rgba(242, 110, 110, 0.2);
+    color: #F26E6E;
  }

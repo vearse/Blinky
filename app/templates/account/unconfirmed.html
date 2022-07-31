@@ -2,20 +2,34 @@
 {% import 'macros/form_macros.html' as f %}
 
 {% block content %}
-    <div class="ui text account">
 
-        <div class="ui padded raised segment">
-            <h3>You need to confirm your account before continuing.</h3>
-
-            <p>When you created an account, you should have received an email from us at {{ current_user.email }}
-            with a link to confirm your email address.</p>
-
-            <div class="ui divider"></div>
-
-            <h3>I didn't receive an email!</h3>
-
-            <p>No problem! Just click the button below and we'll send you another one.</p>
-            <a class="ui small button" href="{{ url_for('account.confirm_request') }}">Resend confirmation email</a>
+    <div class="container center-container">
+        <div class="account">
+            <div class="row mx-0">
+                <div class="col-6 info">
+                    <h3 class="brand my-5">Blinky</h3>
+                    <h4 class="my-3 brand-info">Convert your twitter threads or spaces into a podcast.</h4>
+                </div>
+                <div class="col-6 form">
+                    <div class="m-3">
+                        <div class="form-container mt-4">
+                            <div class="ui padded raised segment">
+                                <h3>You need to confirm your account before continuing.</h3>
+                    
+                                <p>When you created an account, you should have received an email from us at {{ current_user.email }}
+                                with a link to confirm your email address.</p>
+                    
+                                <div class="ui divider"></div>
+                    
+                                <h3>I didn't receive an email!</h3>
+                    
+                                <p>No problem! Just click the button below and we'll send you another one.</p>
+                                <a class="ui small button" href="{{ url_for('account.confirm_request') }}">Resend confirmation email</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

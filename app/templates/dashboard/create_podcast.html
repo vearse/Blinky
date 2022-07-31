@@ -1,0 +1,55 @@
+{% extends 'layouts/account.html' %}
+
+{% block content %}
+    <div class="content-wrapper">
+        <div class="content-section">
+            <div class="content-section-title ">
+                <h5 class="mb-4">Edit Podcast</h5>
+                <hr>
+             </div>
+             <form action="">
+                 <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="">Podcast Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Text</label>
+                            <textarea name="" class="form-control" id="" cols="30" rows="12"></textarea>
+                        </div>  
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="Voice">Voice</label>
+                            {{form.language(class="form-control play-dropdown") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="Voice">Voice</label>
+                            {{form.voice(class="form-control play-dropdown") }}
+                        </div>
+                        <div class="mt-5 mb-4">
+                            {{ form.generate(class="content-button btn-block") }}
+                        </div>
+                        <div class="mt-5">
+                            <div class="form-group">
+                                <audio src=""></audio>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <button class="btn btn-sm content-button">Save Changes</button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-md px-4 outline-blinky">Download </button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-md px-4 outline-blinky">Share</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+             </form>
+        </div>
+     </div>
+{% endblock %}

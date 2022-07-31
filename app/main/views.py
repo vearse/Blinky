@@ -33,9 +33,6 @@ def generate_podcast():
 
         podcast_generator(link, language, voice)
 
-        
-
-
         return render_template('main/playpodcast.html', form=form)
         
     return render_template('main/index.html', form=form)

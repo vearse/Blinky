@@ -119,5 +119,6 @@ def format():
 
 
 if __name__ == '__main__':
-    manager.run()
+    Server(host="0.0.0.0")
+    app.run()
 
