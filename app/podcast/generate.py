@@ -1,9 +1,12 @@
+from flask import  flash, redirect, render_template, request, url_for
+ 
 import tweepy
 
 from app import db
 from app.models import Podcaster
 from app.podcast.tomedia import giftSpeaking, translate_text,generateAudio, generateNewAudiogram
 from app.podcast.animatext import generate_animator
+
 
 api_key = 'kt59fV1XXOQQyBqkcTC74n8xD'
 api_secret = 'FxCw8C7P2ZmFPDJQS5mPqrB5Z5iHSKOaNjURJGV0vBKKXdFEUu'
@@ -123,7 +126,7 @@ def get_all_tweets(tweet):
     return outtweets
 
 
-def podcast_generator(link, language= '', voice=''):
+def podcast_generator(link = '', language= '', voice=''):
     language='en'
     # /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)$/
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',link,language, voice)
@@ -133,7 +136,7 @@ def podcast_generator(link, language= '', voice=''):
     ids = threadIds(thread)
     text = threadText(thread) 
     translated = translate_text(text, language)
-    tweetId ='synthentic_test'
+    # tweetId ='synthentic_test'
     podcast = generateAudio(tweetId, translated, voice, language)
 
     player = Podcaster(
@@ -144,26 +147,28 @@ def podcast_generator(link, language= '', voice=''):
             content=translated,
             podcast = podcast
     )   
+    print(player)
+
     db.session.add(player)
     db.session.commit()
     # generate_animator(tweetId,tweet, 'mossholder')
-    # generateNewAudiogram(tweetId)
+    # generateNewAudiogram(tweetId) 
     
+    return url_for('account.create_podcast', form=player)
+# tweet = """5 Things Every Woman Should Do Immediately After Having Intercourse To Keep The Vagina Healthy
 
-tweet = """5 Things Every Woman Should Do Immediately After Having Intercourse To Keep The Vagina Healthy
+# A thread
+# 1. Use the bathroom before and after intercourse
 
-A thread
-1. Use the bathroom before and after intercourse
+# You can reduce your risk of contracting urinary tract infections and regulate your lady's part pH level by using the bathroom after having intercourse.
+# 2. Make sure you wipe from front to back
 
-You can reduce your risk of contracting urinary tract infections and regulate your lady's part pH level by using the bathroom after having intercourse.
-2. Make sure you wipe from front to back
+# The right way to wipe after having intercourse to prevent the building up of harmful bacteria that may probably cause UTIs is frm front to bck.This is because if U are wiping from the back to the front, U may contaminate the lady's part
+# 3. Always let yourself dry off after you take a shower
 
-The right way to wipe after having intercourse to prevent the building up of harmful bacteria that may probably cause UTIs is frm front to bck.This is because if U are wiping from the back to the front, U may contaminate the lady's part
-3. Always let yourself dry off after you take a shower
+# It is important to note that excess moisture and warmth are a breeding ground for infections, so make sure your female organ is not left moist before you put on your panties.
+# 4. Gently clean the area
 
-It is important to note that excess moisture and warmth are a breeding ground for infections, so make sure your female organ is not left moist before you put on your panties.
-4. Gently clean the area
-
-All you will need for the cleaning up should be mild soap and water. You can gently wash out sweat, semen, and bacteria by wiping from front to back using mild soap and water.
-5. Avoid douching with all possible efforts
-Douching is a very bad habit and should be avoided by every lady. One of the bad effects of douching is that it removes the healthy bacteria in your female organ thereby making it prone to infections and diseases."""
+# All you will need for the cleaning up should be mild soap and water. You can gently wash out sweat, semen, and bacteria by wiping from front to back using mild soap and water.
+# 5. Avoid douching with all possible efforts
+# Douching is a very bad habit and should be avoided by every lady. One of the bad effects of douching is that it removes the healthy bacteria in your female organ thereby making it prone to infections and diseases."""

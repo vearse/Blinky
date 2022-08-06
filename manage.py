@@ -120,5 +120,5 @@ def format():
 
 if __name__ == '__main__':
     # Server(host="0.0.0.0", port="8080")
-    app.run(host='0.0.0.0',port=8080)
+    app.run(host='0.0.0.0')
 

@@ -37,7 +37,7 @@ def create_app(config):
     # not using sqlalchemy event system, hence disabling it
 
     Config[config_name].init_app(app)
-
+    print();
     # Set up extensions
     mail.init_app(app)
     db.init_app(app)
