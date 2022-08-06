@@ -99,7 +99,8 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
     USE_RELOADER = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL','sqlite:///' + os.path.join(basedir, 'data.sqlite'))
+    SQLALCHEMY_DATABASE_URI = "postgresql://doadmin:AVNS_IBgkbf3SbAw4KWOGm7P@db-postgresql-blinky-do-user-10656060-0.b.db.ondigitalocean.com:25060/defaultdb?sslmode=require"
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL','sqlite:///' + os.path.join(basedir, 'data.sqlite'))
     SSL_DISABLE = (os.environ.get('SSL_DISABLE', 'True') == 'True')
 
     @classmethod
@@ -141,7 +142,7 @@ config = {
     'heroku': HerokuConfig,
     'unix': UnixConfig
 }
-
+ 
 # username = doadmin
 # password = AVNS_IBgkbf3SbAw4KWOGm7P hide
 # host = db-postgresql-blinky-do-user-10656060-0.b.db.ondigitalocean.com
