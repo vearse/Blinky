@@ -11,29 +11,40 @@
                  <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="">Podcast Name</label>
-                            <input type="text" class="form-control">
+                            <label for="">Podcast Title</label>
+                            <input type="text" class="form-control" value="{{ podcast.title }}">
                         </div>
                         <div class="form-group">
                             <label for="">Text</label>
-                            <textarea name="" class="form-control" id="" cols="30" rows="12"></textarea>
+                            <textarea name="" class="form-control" id="" cols="30" rows="12">{{podcast.content}}</textarea>
                         </div>  
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="Voice">Voice</label>
-                            {{form.language(class="form-control play-dropdown") }}
+                            <label for="Voice">Language {{podcast.language}}</label>
+                            {{form.language(class="form-control play-dropdown", selected=podcast.language) }}
                         </div>
                         <div class="form-group">
-                            <label for="Voice">Voice</label>
-                            {{form.voice(class="form-control play-dropdown") }}
+                            <label for="Voice">Voice</label> 
+                            {{form.voice(class="form-control play-dropdown",  selected=podcast.speaker) }}
                         </div>
                         <div class="mt-5 mb-4">
                             {{ form.generate(class="content-button btn-block") }}
                         </div>
                         <div class="mt-5">
                             <div class="form-group">
-                                <audio src=""></audio>
+                                <link rel="stylesheet" href="https://cdn.plyr.io/1.6.16/plyr.css">
+                                <script src="https://cdn.plyr.io/1.6.16/plyr.js"></script>
+                                
+                                <div class="js-plyr">
+                                  <audio controls="" crossorigin="">
+                                    <source src="{{podcast_url}}" type="audio/mp3">
+                                    <source src="{{podcast_url}}" type="audio/ogg" />
+                                  </audio>
+                                </div>
+                                <script>
+                                    plyr.setup(document.querySelectorAll('.js-plyr'), {});
+                                </script>
                             </div>
                             <div class="row">
                                 <div class="col-4">
@@ -52,4 +63,5 @@
              </form>
         </div>
      </div>
+    
 {% endblock %}

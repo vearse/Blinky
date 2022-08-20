@@ -3,6 +3,7 @@ import re
 from googletrans import Translator
 import pyttsx3
 from moviepy.editor import *
+from pydub import AudioSegment
 
 def trimmiffy(text):
     emoji_pattern = re.compile("["
@@ -33,7 +34,7 @@ def generateAudio(id, text, speaker, lang):
     engine = pyttsx3.init()
     # engine = pyttsx3.init("espeak")
     voices = engine.getProperty('voices')      
-    engine.setProperty("rate", 170)
+    engine.setProperty("rate", 165)
     print(speaker, lang)
 
     if(lang == 'en'):
@@ -48,6 +49,7 @@ def generateAudio(id, text, speaker, lang):
 
     audio_file= './app/assets/audio/'+ str(id) + '.wav'
     engine.save_to_file(text, audio_file)
+    engine.runAndWait()
     return audio_file
     
 def selectEnglishSpeaker(engine, speaker, voice):

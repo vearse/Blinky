@@ -25,7 +25,7 @@ from app.account.forms import (
     ResetPasswordForm,
 )
 from app.email import send_email
-from app.models import User
+from app.models import User, Podcaster
 
 from app.main.forms import GeneratePodcastForm
 
@@ -285,7 +285,14 @@ def unconfirmed():
         return redirect(url_for('main.login'))
     return render_template('account/unconfirmed.html')
 
+@account.route('/manage', methods=['GET', 'POST'])
+@account.route('/manage/info', methods=['GET', 'POST'])
+@login_required
+def manage():
+    """Display a user's account information."""
+    return render_template('account/manage.html', user=current_user, form=None)
 
+# 
 
 @account.route('/')
 @login_required
@@ -303,19 +310,32 @@ def saved():
 @login_required
 def create_podcast():
     form = GeneratePodcastForm()
-    return render_template('dashboard/create_podcast.html', form=form)
+    podcast = []
+    return render_template('dashboard/create_podcast.html', podcast=podcast,form=form)
+
+@account.route('/podcast/<code>')
+@login_required 
+def edit_podcast(code):
+    podcast = Podcaster.query.filter_by(code=code).first()
+    podcast_url = request.base_url + 'podcast/1558581414920085504.mp3'
+    form = GeneratePodcastForm() 
+ 
+    return render_template('dashboard/create_podcast.html', podcast_url=podcast_url,podcast=podcast,form=form)
+ 
 
 @account.route('/home/podcast')
 @login_required
 def podcast():
-    form = GeneratePodcastForm()
-    return render_template('dashboard/podcast.html', form=form)
+    podcasts = Podcaster.query.all()
+    
+    return render_template('dashboard/podcast.html', podcasts=podcasts)
 
 @account.route('/create/audiograph')
 @login_required
 def create_audiograph():
     form = GeneratePodcastForm()
     return render_template('dashboard/create_audiograph.html', form=form)
+
 
 @account.route('/home/audiograph')
 @login_required
@@ -324,9 +344,3 @@ def audiograph():
     return render_template('dashboard/audiograph.html', form=form)
 
 
-@account.route('/manage', methods=['GET', 'POST'])
-@account.route('/manage/info', methods=['GET', 'POST'])
-@login_required
-def manage():
-    """Display a user's account information."""
-    return render_template('account/manage.html', user=current_user, form=None)

@@ -1,6 +1,8 @@
+from venv import create
 from flask import  flash, redirect, render_template, request, url_for
- 
-import tweepy
+from flask_login import current_user
+
+import tweepy,datetime
 
 from app import db
 from app.models import Podcaster
@@ -126,8 +128,7 @@ def get_all_tweets(tweet):
     return outtweets
 
 
-def podcast_generator(link = '', language= '', voice=''):
-    language='en'
+def podcast_generator(link = '', language= 'sh', voice=''):
     # /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)$/
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',link,language, voice)
     # global tweet
@@ -136,25 +137,23 @@ def podcast_generator(link = '', language= '', voice=''):
     ids = threadIds(thread)
     text = threadText(thread) 
     translated = translate_text(text, language)
-    # tweetId ='synthentic_test'
     podcast = generateAudio(tweetId, translated, voice, language)
 
     player = Podcaster(
-            user_id=12,
-            code= tweetId,
-            language=language,
-            speaker=voice,
-            content=translated,
-            podcast = podcast
+        user_id= current_user.id,
+        code= tweetId,
+        language= language,
+        speaker= voice,
+        content= translated,
+        podcast = podcast, 
+        created_at = datetime.datetime.now()
     )   
-    print(player)
-
     db.session.add(player)
-    db.session.commit()
-    # generate_animator(tweetId,tweet, 'mossholder')
-    # generateNewAudiogram(tweetId) 
+    db.session.commit() 
     
-    return url_for('account.create_podcast', form=player)
+    print('Done')
+    return player
+
 # tweet = """5 Things Every Woman Should Do Immediately After Having Intercourse To Keep The Vagina Healthy
 
 # A thread

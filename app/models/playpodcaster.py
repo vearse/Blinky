@@ -1,3 +1,4 @@
+from turtle import title
 from flask import current_app
 from flask_login import AnonymousUserMixin, UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
@@ -12,10 +13,13 @@ class Podcaster(db.Model):
     code = db.Column(db.String(64),  unique=True, index=True)
     language = db.Column(db.String(64))
     speaker = db.Column(db.String(64))
+    title = db.Column(db.String(64))
+    status = db.Column(db.String(64))
     content = db.Column(db.Text)
     podcast = db.Column(db.String(128))
     videography = db.Column(db.String(128))
     extra = db.Column(db.String(64))
+    created_at = db.Column(db.Date())
 
     # def __init__(self, **kwargs):
     #     super(Podcaster, self).__init__(**kwargs)

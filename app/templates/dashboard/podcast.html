@@ -29,137 +29,35 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
-                  <th scope="row">
-                      <span class="mini-podcast">
-                          <i class="fa fa-microphone" style="font-size: 12px;"></i>
-                       </span>
-                  </th>
-                  <td>Podcast Episode 1</td>
-                  <td>02:04</td>
-                  <td>
-                      <span class="bg-publish px-3 py-1 rounded-md text-capitalize text-sm">
-                          Published
-                      </span>
-                  </td>
-                  <td>01/06/2022</td>
-                  <td class="row">
-                      <button class="col-2">
-                          <i class="fa fa-edit" style="color: #7749F8;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-download" style="color: #56C456;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-share" style="color: #0066FF;;"></i>
-                      </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                      <span class="mini-podcast">
-                          <i class="fa fa-microphone" style="font-size: 12px;"></i>
-                       </span>
-                  </th>
-                  <td>Podcast Episode 2</td>
-                  <td>02:04</td>
-                  <td>
-                      <span class="bg-saved px-3 py-1 rounded-md text-capitalize text-sm">
-                          Saved
-                      </span>
-                  </td>
-                  <td>01/06/2022</td>
-                  <td class="row">
-                      <button class="col-2">
-                          <i class="fa fa-edit" style="color: #7749F8;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-download" style="color: #56C456;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-share" style="color: #0066FF;;"></i>
-                      </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                      <span class="mini-podcast">
-                          <i class="fa fa-play" style="font-size: 12px;"></i>
-                       </span>
-                  </th>
-                  <td>Podcast Episode 3</td>
-                  <td>02:04</td>
-                  <td>
-                      <span class="bg-saved px-3 py-1 rounded-md text-capitalize text-sm">
-                          Saved
-                      </span>
-                  </td>
-                  <td>01/06/2022</td>
-                  <td class="row">
-                      <button class="col-2">
-                          <i class="fa fa-edit" style="color: #7749F8;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-download" style="color: #56C456;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-share" style="color: #0066FF;;"></i>
-                      </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                      <span class="mini-podcast">
-                          <i class="fa fa-play" style="font-size: 12px;"></i>
-                       </span>
-                  </th>
-                  <td>Podcast Episode 4</td>
-                  <td>02:04</td>
-                  <td>
-                      <span class="bg-saved px-3 py-1 rounded-md text-capitalize text-sm">
-                          Saved
-                      </span>
-                  </td>
-                  <td>01/06/2022</td>
-                  <td class="row">
-                      <button class="col-2">
-                          <i class="fa fa-edit" style="color: #7749F8;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-download" style="color: #56C456;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-share" style="color: #0066FF;;"></i>
-                      </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                      <span class="mini-podcast">
-                          <i class="fa fa-microphone" style="font-size: 12px;"></i>
-                       </span>
-                  </th>
-                  <td>Podcast Episode 5</td>
-                  <td>02:04</td>
-                  <td>
-                      <span class="bg-saved px-3 py-1 rounded-md text-capitalize text-sm">
-                          Saved
-                      </span>
-                  </td>
-                  <td>01/06/2022</td>
-                  <td class="row">
-                      <button class="col-2">
-                          <i class="fa fa-edit" style="color: #7749F8;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-download" style="color: #56C456;"></i>
-                      </button>
-                      <button class="col-2">
-                          <i class="fa fa-share" style="color: #0066FF;;"></i>
-                      </button>
-                  </td>
-                </tr>
-                <tr>
+                {% for podcast in podcasts  %}
+                    <tr>
+                    <th scope="row">
+                        <span class="mini-podcast">
+                            <i class="fa fa-microphone" style="font-size: 12px;"></i>
+                        </span>
+                    </th>
+                    <td>{{podcast.code}}</td>
+                    <td>02:04</td>
+                    <td>
+                        <span class="bg-publish px-3 py-1 rounded-md text-capitalize text-sm">
+                            Published
+                        </span>
+                    </td>
+                    <td>01/06/2022</td>
+                    <td class="row">
+                        <button class="col-2" onclick="window.location.href = '{{ url_for('account.edit_podcast', code=podcast.code ) }}';">
+                            <i class="fa fa-edit" style="color: #7749F8;"></i>
+                        </button>
+                        <button class="col-2">
+                            <i class="fa fa-download" style="color: #56C456;"></i>
+                        </button>
+                        <button class="col-2">
+                            <i class="fa fa-share" style="color: #0066FF;;"></i>
+                        </button>
+                    </td>
+                    </tr>
+                {% endfor %}
+                <!-- <tr>
                   <th scope="row">
                       <span class="mini-podcast">
                           <i class="fa fa-play" style="font-size: 12px;"></i>
@@ -210,7 +108,7 @@
                           <i class="fa fa-share" style="color: #0066FF;;"></i>
                       </button>
                   </td>
-                </tr>
+                </tr> -->
               
             </tbody>
         </table>
